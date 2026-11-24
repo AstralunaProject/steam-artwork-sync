@@ -2,6 +2,10 @@
 
 **Animated Steam profile artwork that stays in sync with your animated background.**
 
+![Left: the showcase half a loop out of phase, the background's streaks break at its edges. Right: built with longart.py, the streaks run straight through.](docs/demo.gif)
+
+<sub>Demo: "Frieren Steam Profile (FREE)" artwork by ruekae (free to use), over the "Black Hole" animated background from the Steam Points Shop.</sub>
+
 Steam plays the profile background (a WebM video) and the showcase artwork (GIFs) independently, so a long art that is meant to "continue" the background drifts out of place after a few seconds. This kit bakes the background *into* the artwork: each GIF carries the exact crop of the video behind it, with frame delays that add up to the video's loop, so the showcase looks like a window cut into the background.
 
 ## What it does
@@ -25,15 +29,15 @@ Measured on a real profile (1920 px wide window): showcase main piece at x 495 /
 ## Quick start
 
 ```
-python steam_artwork_sync/longart.py --fundo background.webm --arte art.gif --saida out/
-python steam_artwork_sync/watermark.py --entrada out/principal.gif --saida out/main_marked.gif --texto "steamcommunity.com/id/<you>"
+python steam_artwork_sync/longart.py --background background.webm --art art.gif --out out/
+python steam_artwork_sync/watermark.py --input out/principal.gif --out out/main_marked.gif --text "steamcommunity.com/id/<you>"
 ```
 
-Each tool has `--help`.
+Each tool has `--help`. The output files and report keys keep their original Portuguese names (`principal.gif`, `lateral.gif`, `relatorio.json`).
 
 ## Uploading
 
-`upload_artwork.py` needs the hidden fields of the upload form at `steamcommunity.com/sharedfiles/edititem/767/3/` while you are logged in. Save them to a JSON file and pass it with `--campos`; never put them on the command line. The form token expires after about 24 hours; an upload that comes back with `fileuploadsuccess=15` usually means a stale token, so read the fields again.
+`upload_artwork.py` needs the hidden fields of the upload form at `steamcommunity.com/sharedfiles/edititem/767/3/` while you are logged in. Save them to a JSON file and pass it with `--fields`; never put them on the command line. The form token expires after about 24 hours; an upload that comes back with `fileuploadsuccess=15` usually means a stale token, so read the fields again.
 
 ## Known limits
 
@@ -42,4 +46,8 @@ Each tool has `--help`.
 
 ## Status
 
-Early and private. Tools were built and measured against one profile; expect rough edges.
+Early. Tools were built and measured against one profile; expect rough edges.
+
+## License
+
+MIT, see [LICENSE](LICENSE).

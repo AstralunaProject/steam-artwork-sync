@@ -4,6 +4,7 @@ __pycache__/
 .venv/
 out/
 *.gif
+!docs/demo.gif
 *.webm
 *.mp4
 *.mkv

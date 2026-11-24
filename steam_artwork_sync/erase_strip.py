@@ -22,11 +22,11 @@ from watermark import quadros_gif  # noqa: E402
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--entrada", type=Path, required=True)
-    ap.add_argument("--saida", type=Path, required=True)
-    ap.add_argument("--caixa", required=True, help="x0,y0,x1,y1 (x1/y1 exclusive); repeat with ; for several")
-    ap.add_argument("--raio", type=int, default=6)
-    ap.add_argument("--cores", type=int, default=64)
+    ap.add_argument("--input", "--entrada", dest="entrada", type=Path, required=True)
+    ap.add_argument("--out", "--saida", dest="saida", type=Path, required=True)
+    ap.add_argument("--box", "--caixa", dest="caixa", required=True, help="x0,y0,x1,y1 (x1/y1 exclusive); repeat with ; for several")
+    ap.add_argument("--radius", "--raio", dest="raio", type=int, default=6)
+    ap.add_argument("--colors", "--cores", dest="cores", type=int, default=64)
     a = ap.parse_args()
 
     orig = a.entrada.read_bytes()

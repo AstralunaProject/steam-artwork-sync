@@ -26,12 +26,12 @@ from watermark import quadros_gif  # noqa: E402
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--entrada", type=Path, required=True)
-    ap.add_argument("--saida", type=Path, required=True)
-    ap.add_argument("--fator", type=int, default=2)
-    ap.add_argument("--quadros", type=int, help="total frames per loop (overrides --fator)")
-    ap.add_argument("--cores", type=int, default=64)
-    ap.add_argument("--limiar", type=int, default=0, help="0-255: a difference below this repeats the previous pixel (mild loss, smaller file)")
+    ap.add_argument("--input", "--entrada", dest="entrada", type=Path, required=True)
+    ap.add_argument("--out", "--saida", dest="saida", type=Path, required=True)
+    ap.add_argument("--factor", "--fator", dest="fator", type=int, default=2)
+    ap.add_argument("--frames", "--quadros", dest="quadros", type=int, help="total frames per loop (overrides --fator)")
+    ap.add_argument("--colors", "--cores", dest="cores", type=int, default=64)
+    ap.add_argument("--threshold", "--limiar", dest="limiar", type=int, default=0, help="0-255: a difference below this repeats the previous pixel (mild loss, smaller file)")
     a = ap.parse_args()
 
     orig = a.entrada.read_bytes()

@@ -45,9 +45,9 @@ def midia(item: dict) -> tuple[str, str]:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--termos", nargs="+", required=True)
+    ap.add_argument("--terms", "--termos", dest="termos", nargs="+", required=True)
     ap.add_argument("--classes", nargs="+", type=int, default=list(CLASSES))
-    ap.add_argument("--saida", type=Path, required=True)
+    ap.add_argument("--out", "--saida", dest="saida", type=Path, required=True)
     ap.add_argument("--json", type=Path, help="also writes the raw list")
     a = ap.parse_args()
 

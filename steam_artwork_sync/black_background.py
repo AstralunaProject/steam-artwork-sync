@@ -23,12 +23,12 @@ from watermark import quadros_gif  # noqa: E402
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--entrada", type=Path, required=True)
-    ap.add_argument("--saida", type=Path, required=True)
-    ap.add_argument("--limiar", type=int, default=22, help="minimum brightness (0-255) to count as character/frame")
-    ap.add_argument("--dilatar", type=int, default=2, help="px of margin around what stays")
-    ap.add_argument("--cores", type=int, default=128)
-    ap.add_argument("--mascara-png", type=Path, help="saves the mask for checking")
+    ap.add_argument("--input", "--entrada", dest="entrada", type=Path, required=True)
+    ap.add_argument("--out", "--saida", dest="saida", type=Path, required=True)
+    ap.add_argument("--threshold", "--limiar", dest="limiar", type=int, default=22, help="minimum brightness (0-255) to count as character/frame")
+    ap.add_argument("--dilate", "--dilatar", dest="dilatar", type=int, default=2, help="px of margin around what stays")
+    ap.add_argument("--colors", "--cores", dest="cores", type=int, default=128)
+    ap.add_argument("--mask-png", "--mascara-png", dest="mascara_png", type=Path, help="saves the mask for checking")
     a = ap.parse_args()
 
     orig = a.entrada.read_bytes()

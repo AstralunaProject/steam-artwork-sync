@@ -50,9 +50,9 @@ def medir(item: dict, segundos: float, fps: int) -> dict | None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--entrada", type=Path, required=True)
-    ap.add_argument("--saida", type=Path, required=True)
-    ap.add_argument("--segundos", type=float, default=4)
+    ap.add_argument("--input", "--entrada", dest="entrada", type=Path, required=True)
+    ap.add_argument("--out", "--saida", dest="saida", type=Path, required=True)
+    ap.add_argument("--seconds", "--segundos", dest="segundos", type=float, default=4)
     ap.add_argument("--fps", type=int, default=8)
     ap.add_argument("--threads", type=int, default=6)
     a = ap.parse_args()

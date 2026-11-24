@@ -72,10 +72,10 @@ def folha(ranking: list[dict], destino: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--classe", type=int, default=3, help="3 background, 13 mini-profile, 14 frame, 15 avatar")
+    ap.add_argument("--class", "--classe", dest="classe", type=int, default=3, help="3 background, 13 mini-profile, 14 frame, 15 avatar")
     ap.add_argument("--top", type=int, default=120)
-    ap.add_argument("--limiar", type=int, default=28, help="luminance 0-255 below which a pixel counts as black")
-    ap.add_argument("--saida", type=Path, required=True, help="prefix: writes <prefix>.json and <prefix>.jpg")
+    ap.add_argument("--threshold", "--limiar", dest="limiar", type=int, default=28, help="luminance 0-255 below which a pixel counts as black")
+    ap.add_argument("--out", "--saida", dest="saida", type=Path, required=True, help="prefix: writes <prefix>.json and <prefix>.jpg")
     a = ap.parse_args()
 
     itens = todos(a.classe)

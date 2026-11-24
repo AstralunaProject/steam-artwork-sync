@@ -41,11 +41,11 @@ class SemRedirecionar(urllib.request.HTTPRedirectHandler):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--campos", required=True, help="JSON with the form's hidden inputs")
-    ap.add_argument("--arquivo", required=True)
-    ap.add_argument("--titulo", required=True)
-    ap.add_argument("--longa", action="store_true", help="image_width=1000, image_height=1")
-    ap.add_argument("--visibilidade", default="0", help="0 public, 1 friends, 2 private, 3 unlisted")
+    ap.add_argument("--fields", "--campos", dest="campos", required=True, help="JSON with the form's hidden inputs")
+    ap.add_argument("--file", "--arquivo", dest="arquivo", required=True)
+    ap.add_argument("--title", "--titulo", dest="titulo", required=True)
+    ap.add_argument("--long", "--longa", dest="longa", action="store_true", help="image_width=1000, image_height=1")
+    ap.add_argument("--visibility", "--visibilidade", dest="visibilidade", default="0", help="0 public, 1 friends, 2 private, 3 unlisted")
     a = ap.parse_args()
 
     arq = Path(a.arquivo)
